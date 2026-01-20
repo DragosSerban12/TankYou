@@ -1,0 +1,18 @@
+{% include 'base.html' %}
+<body>
+<h2>Pedidos</h2>
+
+{% for p in pedidos %}
+    Pedido #{{ p.id }} – {{ p.usuario.nombre }} ({{ p.estado }})<br><br>
+{% empty %}
+    No hay pedidos.
+{% endfor %}
+
+<h2>Turnos</h2>
+
+{% for t in turnos %}
+    Turno {{ t.fecha }} {{ t.hora_inicio }} - {{ t.hora_fin }}<br><br>
+{% empty %}
+    No hay turnos.
+{% endfor %}
+</body>

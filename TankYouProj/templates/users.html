@@ -1,0 +1,15 @@
+{% for usuario in usuarios %}
+    <p>{{ usuario.nombre }} {{ usuario.apellidos }}</p>
+{% endfor %}
+
+<div class="pagination">
+    {% if page_obj.has_previous %}
+        <a href="?page={{ page_obj.previous_page_number }}">Anterior</a>
+    {% endif %}
+
+    Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}
+
+    {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}">Siguiente</a>
+    {% endif %}
+</div>

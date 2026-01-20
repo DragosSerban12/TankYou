@@ -1,0 +1,10 @@
+{% include 'base.html' %}
+<body>
+<h2>Tipos de Recarga</h2>
+
+{% for r in recargas %}
+    {{ r.get_tipo_combustible_display }} – {{ r.precio_por_litro }} €/L<br><br>
+{% empty %}
+    No hay recargas.
+{% endfor %}
+</body>

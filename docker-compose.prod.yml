@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  web:
+    command: >
+      sh -c "
+      python manage.py migrate &&
+      python manage.py collectstatic --noinput &&
+      gunicorn TankYouProj.wsgi:application --bind 0.0.0.0:8000
+      "
+    environment:
+      DEBUG: "False"
+    volumes: []
+    ports:
+      - "8000:8000"
+
+  db:
+    ports: []

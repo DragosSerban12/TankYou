@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}Crear usuario{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Crear usuario</h2>
+
+<form method="post">
+    {% csrf_token %}
+    {% crispy form %}
+</form>
+{% endblock %}

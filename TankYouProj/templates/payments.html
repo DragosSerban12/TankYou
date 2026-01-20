@@ -1,0 +1,18 @@
+{% include 'base.html' %}
+<body>
+<h2>Pagos</h2>
+
+{% for p in pagos %}
+    Pago #{{ p.id }} – {{ p.estado_pago }} – {{ p.importe }}€<br><br>
+{% empty %}
+    No hay pagos.
+{% endfor %}
+
+<h2>Reembolsos</h2>
+
+{% for r in reembolsos %}
+    Reembolso #{{ r.id }} – {{ r.estado }}<br><br>
+{% empty %}
+    No hay reembolsos.
+{% endfor %}
+</body>

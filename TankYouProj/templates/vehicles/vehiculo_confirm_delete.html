@@ -1,0 +1,10 @@
+<html>
+<div class="container">
+    <h2>Eliminar vehiculo</h2>
+    <form method="post">{% csrf_token %}
+        <p>Estas seguro de querer eliminar "{{ object }}"?</p>
+        {{ form }}
+        <input type="submit" value="Confirmar" class="btn btn-danger">
+    </form>
+</div>
+</html>

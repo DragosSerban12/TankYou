@@ -1,0 +1,6 @@
+services:
+  web:
+    environment:
+      DEBUG: "True"
+    volumes:
+      - ./TankYouProj:/code

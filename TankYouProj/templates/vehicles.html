@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}Mis vehículos{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>🚗 Mis vehículos</h2>
+
+    <a href="{% url 'vehiculo_crear' %}" class="btn btn-primary">
+        + Añadir vehículo
+    </a>
+</div>
+
+{% if vehiculos %}
+    <div class="row">
+        {% for v in vehiculos %}
+            <div class="col-md-6 mb-3">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            {{ v.marca }} {{ v.modelo }}
+                        </h5>
+
+                        <p class="mb-1">
+                            <strong>Matrícula:</strong> {{ v.matricula }}
+                        </p>
+
+                        <p class="mb-1">
+                            <strong>Combustible:</strong>
+                            {{ v.get_tipo_combustible_display }}
+                        </p>
+
+                        <p class="mb-3">
+                            <strong>Año:</strong> {{ v.anyo_compra }}
+                        </p>
+
+                        <div class="d-flex justify-content-end gap-2">
+                            <a href="{% url 'vehiculo_editar' v.pk %}"
+                               class="btn btn-outline-secondary btn-sm">
+                                Editar
+                            </a>
+
+                            <a href="{% url 'vehiculo_eliminar' v.pk %}"
+                               class="btn btn-outline-danger btn-sm">
+                                Eliminar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+{% else %}
+    <div class="alert alert-info">
+        No tienes vehículos registrados todavía.
+    </div>
+{% endif %}
+{% endblock %}

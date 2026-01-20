@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Login | TankYou{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-5">
+
+        <div class="card shadow-sm">
+            <div class="card-body">
+
+                <h2 class="text-center mb-4">Iniciar sesión</h2>
+
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+
+                    <div class="d-grid mb-3">
+                        <button type="submit" class="btn btn-primary">
+                            Entrar
+                        </button>
+                    </div>
+                </form>
+
+                {% if form.errors %}
+                    <div class="alert alert-danger">
+                        Email o contraseña incorrectos
+                    </div>
+                {% endif %}
+
+                <!-- 🔗 Redirección a registro -->
+                <div class="text-center mt-3">
+                    <span>¿No tienes cuenta?</span><br>
+                    <a href="{% url 'usuario_crear' %}" class="btn btn-link">
+                        Crear cuenta
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}
+

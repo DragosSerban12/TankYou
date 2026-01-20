@@ -1,0 +1,10 @@
+{% include 'base.html' %}
+<body>
+<h2>Notificaciones</h2>
+
+{% for n in notificaciones %}
+    {{ n.tipo }} – {{ n.mensaje }} – {{ n.fecha_envio }}<br><br>
+{% empty %}
+    No hay notificaciones.
+{% endfor %}
+</body>
