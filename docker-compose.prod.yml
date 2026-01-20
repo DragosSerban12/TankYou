@@ -1,18 +1,16 @@
 services:
   web:
-    command: gunicorn TankYouProj.wsgi:application --bind 0.0.0.0:8000
+    command: >
+      sh -c "
+      python manage.py migrate &&
+      python manage.py collectstatic --noinput &&
+      gunicorn TankYou.wsgi:application --bind 0.0.0.0:8000
+      "
     environment:
       DEBUG: "False"
     ports:
       - "8000:8000"
-    depends_on:
-      - db
+    restart: always
 
   db:
-    image: postgres:15
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-
-volumes:
-  postgres_data:
-
+    restart: always
