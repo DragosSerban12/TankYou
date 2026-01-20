@@ -88,7 +88,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'TankYou.wsgi.application'
+WSGI_APPLICATION = 'TankYouProj.wsgi.application'
 
 
 # Database
