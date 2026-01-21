@@ -1,6 +1,11 @@
 services:
   web:
     build: .
+    command: >
+      sh -c "
+      python manage.py migrate &&
+      gunicorn TankYou.wsgi:application --bind 0.0.0.0:8000
+      "
     volumes:
       - ./TankYouProj:/code
     environment:
@@ -21,6 +26,15 @@ services:
       POSTGRES_PASSWORD: 123
     volumes:
       - postgres_data:/var/lib/postgresql/data
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - web
 
 volumes:
   postgres_data:
